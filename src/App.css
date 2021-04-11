@@ -1,0 +1,56 @@
+body {
+  /* background-color:cornflowerblue; */
+  background-image: url("/src/supergirl\ background.png");
+}
+.App {
+  /* text-align: center; */
+  
+}
+.title-recipe {
+  text-align: center;
+  font-family: sans-serif;
+  color: rgb(241, 232, 219);
+}
+
+.homecontainer {
+  width: 75%;
+  justify-items: center;
+  margin-left: 150px;
+  margin-right: 150px;
+}
+
+.btn-edit {
+  color: #b5e7f9;
+}
+.MuiDialog-paperWidthSm {
+  width: 600px; important:  !important;
+  /* border-inline: 2px; */
+}
+.MuiDialog-container {
+  height: 50%; important: !important;
+}
+/* //border line bottom */
+.WithStyles\(ForwardRef\(AccordionDetails\)\)-root-6 {
+  border-bottom-style: inset;
+}
+/* border bottom style for Add Modal */
+.MuiDialogTitle-root {
+  border-bottom-style: inset;
+}
+.modal-header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal-close-button {
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #000;
+  opacity: .5;
+  cursor: pointer;
+  border: none;
+}
+.modal-body {
+  margin-top: -30px;
+}

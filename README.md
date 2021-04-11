@@ -1,2 +1,2 @@
-# Supergirl-recipe-box
-react project
+# supergirl-recipe-box-app
+ recipe box that adds and deletes recipes
