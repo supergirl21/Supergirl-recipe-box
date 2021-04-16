@@ -55,7 +55,7 @@ export default function AccordionRecipe({recipeData}) {
   // console.log(props);
 
   const [expanded, setExpanded] = useState(false);
-  // const [recipeTitle, setRecipeTitle] = useState(data);
+  const [recipeTitle, setRecipeTitle] = useState(data);
   // const [ingredients, setIngredients] = useState([]);
 
   const handleChange = (panel) => (event, newExpanded) => {
@@ -69,11 +69,11 @@ export default function AccordionRecipe({recipeData}) {
           <Accordion style={{
             marginBottom: "20px",
             borderRadius: 5,
-        }} square expanded={expanded === 'panel'} onChange={handleChange('panel')}>
-            <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
+        }} >
+            <AccordionSummary >
               <Typography >{recipeData.title}</Typography>
             </AccordionSummary>
-            <AccordionDetails>
+            <AccordionDetails square expanded={expanded === 'panel'} onChange={handleChange('panel')}aria-controls="panel1d-content" id="panel1d-header">
               <Typography>{recipeData.ingredients.map(ingredients => {
                 return (
                   <Typography>
@@ -84,7 +84,6 @@ export default function AccordionRecipe({recipeData}) {
                 )
               })}
                 <EditRecipe />
-                
               </Typography>
             </AccordionDetails>
           </Accordion>

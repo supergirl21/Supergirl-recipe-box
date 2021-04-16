@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {Button, Typography, TextField, Dialog, DialogActions, DialogContent, DialogTitle} from '@material-ui/core';
 import Recipe from './AccordionRecipe';
 import Accordion from '@material-ui/core/Accordion';
@@ -12,9 +12,18 @@ import Modal from '@material-ui/core/Modal';
 export default function AddRecipe(recipeData) {
   const [open, setOpen] = useState(false);
   const [recipes, setRecipes] = useState([]);
-  const [recipe, setRecipe] = useState("");
+  const [recipe, setRecipe] = useState(data);
   const [ingredients, setIngredients] = useState([]);
-  const [ingredient, setIngredient] = useState("");
+  const [ingredient, setIngredient] = useState(data);
+
+  useEffect(()=> {
+          setRecipe(recipe.title);
+          console.log(recipe);
+          setIngredient(ingredient);
+          console.log(ingredient);
+        //   recipeData()
+      }, []);
+  
 
   function handleSubmit(e) {
       console.log(e);
@@ -57,54 +66,52 @@ export default function AddRecipe(recipeData) {
         </Button>
 {/* //form */}
         <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-            <div className="modal-header">         
-                    <Button type="button" className="modal-close-button" data-dismiss="modal" aria-label="Close" onClick={handleClose}>
-                        <span aria-hidden="true">&times;</span>
-                    </Button>
-            </div> 
-            <form  onSubmit ={handleSubmit} className="modal-body">
-                <DialogTitle id="form-dialog-title">Add Recipe</DialogTitle>
-                <DialogContent >
-                    <Typography >Recipe Title</Typography>
-                    <TextField 
-                        className="form-control" 
-                        type="text"
-                        margin="dense" 
-                        id="outlined-basic" 
-                        label="Type Recipe Title" 
-                        // defaultValue={recipeData.ingredients}
-                        onChange= {(e) => setRecipe(e.target.value)}
-                        value = {recipe.value}
-                        variant="outlined" 
-                        fullWidth= 'true'/>
-
-
-                </DialogContent>
-            </form>
-            
-            <form  onSubmit ={handleSubmit} >
-            
-                <DialogContent >
-                    <Typography >Ingredients</Typography>
-                    <TextField 
-                        className="form-control" 
-                        type="text"
-                        margin="dense" 
-                        id="outlined-basic" 
-                        label="Type Ingredients" 
-                        onChange= {(e) => setIngredient(e.target.value)}
-                        value = {ingredient.value}
-                        variant="outlined" 
-                        fullWidth/>
-                </DialogContent>
+            <div>
+                <div className="modal-header">         
+                        <Button type="button" className="modal-close-button" data-dismiss="modal" aria-label="Close" onClick={handleClose}>
+                            <span aria-hidden="true">&times;</span>
+                        </Button>
+                </div> 
+                <form  onSubmit ={handleSubmit} className="modal-body">
+                    <DialogTitle id="form-dialog-title">Add Recipe</DialogTitle>
+                    <DialogContent >
+                        <Typography >Recipe Title</Typography>
+                        <TextField 
+                            className="form-control" 
+                            type="text"
+                            margin="dense" 
+                            id="outlined-basic" 
+                            label="Type Recipe Title" 
+                            onChange= {(e) => setRecipe(e.target.value)}
+                            value = {data.title}
+                            variant="outlined" 
+                            fullWidth= 'true'/>
+                    </DialogContent>
+                </form>
                 
-                <DialogActions>
-                    <Button variant="outlined" onClick={handleClose}>Close</Button>
-                    <Button type="submit" variant="contained" color="primary" onClick={handleClose}>Submit</Button>
-                   
-                </DialogActions>
-        </form>
-            
+                <form  onSubmit ={handleSubmit} >
+                
+                    <DialogContent >
+                        <Typography >Ingredients</Typography>
+                        <TextField 
+                            className="form-control" 
+                            type="text"
+                            margin="dense" 
+                            id="outlined-basic" 
+                            label="Type Ingredients" 
+                            onChange= {(e) => setIngredient(e.target.value)}
+                            value = {data.ingredients}
+                            variant="outlined" 
+                            fullWidth/>
+                    </DialogContent>
+                    
+                    <DialogActions>
+                        <Button variant="outlined" onClick={handleClose}>Close</Button>
+                        <Button type="submit" variant="contained" color="primary" onClick={handleClose}>Submit</Button>
+                    
+                    </DialogActions>
+                </form>
+            </div>
         </Dialog>
         {recipes.map((recipe) => <div key={recipe.id}>{recipe.text}</div>)}
         {ingredients.map((ingredient) => <div>{ingredient.text}</div>)}
